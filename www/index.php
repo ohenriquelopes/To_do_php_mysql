@@ -61,16 +61,31 @@ try {
         select * from usuarios
     ';
 
-    $stmt = $dbh->query($query);
-    // $lista = $stmt->fetchALL(); // volta os arrays com indice numero e associativo juntos
-    $lista = $stmt->fetchALL(PDO::FETCH_ASSOC);
-    // $lista = $stmt->fetchALL(PDO::FETCH_OBJ); // retorna em obj e nao array
+    // $stmt = $dbh->query($query); //foreach abaixo substitui esse
+    foreach($dbh->query($query) as $key => $value) {
+        print_r($value);
+        echo '<hr>';
+    }
 
+    // $lista = $stmt->fetchALL(); // volta os arrays com indice numero e associativo juntos
+    //$lista = $stmt->fetchALL(PDO::FETCH_ASSOC);
+    // $lista = $stmt->fetchALL(PDO::FETCH_OBJ); // retorna em obj e nao array
+    
+
+    /*
     echo '<pre>';
     print_r($lista);
     echo '</pre>';
+    */
+        /*
+    foreach ($lista as $key => $value) {
+        echo($value['nome']);
+        echo '<hr>';
+    }
 
-    echo $lista[1][1]; // acessa o array dentro do array
+    */
+
+    //echo $lista[1][1]; // acessa o array dentro do array
     //echo $lista[1]->nome; // acessa o objeto dentro do araray (FETCH_OBJ)
 
     // "trata" a mensagem de erro para ficar mais legivel
