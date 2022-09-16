@@ -1,6 +1,6 @@
 <?php
 
-
+/*
     if(!empty($_POST['usuario']) && !empty($_POST['senha'])) {
 
         $dsn = 'mysql:host=mysql;dbname=my_app;port:3306';
