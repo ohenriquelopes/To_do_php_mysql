@@ -7,7 +7,7 @@ class Tarefa {
     private $data_cadastro;
 
     public function __get($atributo) {
-        return $this->$atribudo;
+        return $this->$atributo;
     }
 
     public function __set($atribudo, $valor) {
