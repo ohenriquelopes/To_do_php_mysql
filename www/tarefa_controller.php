@@ -7,7 +7,6 @@
 
     $acao = isset($_GET['acao']) ? $_GET['acao'] : $acao;
     
-
     if($acao == 'inserir' ) {
         $tarefa = new Tarefa();
         $tarefa->__set('tarefa', $_POST['tarefa']);
@@ -44,6 +43,16 @@
         
         $tarefaService = new TarefaService($conexao, $tarefa);
         $tarefaService->remover();
+
+        header('location: todas_tarefas.php');
+    } else if ($acao == 'marcarRealizada') {
+        $tarefa = new Tarefa();
+        $tarefa->__set('id', $_GET['id'])->__set('id_status', 2);
+
+        $conexao = new conexao();
+
+        $tarefaService = new TarefaService($conexao, $tarefa);
+        $tarefaService->marcarRealizada();
 
         header('location: todas_tarefas.php');
     }
