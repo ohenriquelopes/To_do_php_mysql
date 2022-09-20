@@ -7,7 +7,7 @@
 
     $acao = isset($_GET['acao']) ? $_GET['acao'] : $acao;
     
-    if($_GET['acao'] == 'inserir' ) {
+    if($acao == 'inserir' ) {
         $tarefa = new Tarefa();
         $tarefa->__set('tarefa', $_POST['tarefa']);
 
@@ -17,7 +17,12 @@
         $tarefaService->inserir();
         
         header('Location: nova_tarefa.php?inclusao=1');
+
     } else if ($acao == 'recuperar') {
-        echo "Chegamos ate aqui";
+        $tarefa = new Tarefa();
+        $conexao = new Conexao();
+
+        $tarefaService = new TarefaService($conexao, $tarefa);
+        $tarefas = $tarefaService->recuperar();
     }
 ?>  
